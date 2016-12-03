@@ -10,11 +10,9 @@ public class TowerAttack : MonoBehaviour {
 	public int towerType;
     public int towerPrice;
 	public GameObject bullet;
-	private float nextAttack;
 
 	// Use this for initialization
 	void Start () {
-		nextAttack = Time.time;
 		InvokeRepeating ("attack", 0f, towerSpeed);
         //remove player money based on price
 	}
@@ -43,7 +41,16 @@ public class TowerAttack : MonoBehaviour {
 	void shoot(Transform enemy) {
         Vector2 direction = new Vector2(enemy.position.x - transform.position.x, enemy.position.y - transform.position.y);
         float rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        GameObject bulletInstance = Instantiate(bullet, transform.position, Quaternion.Euler(0,0,rotation + 90));
-        //bulletInstance.SendMessage("setPosition", enemy.position);
+        GameObject bulletInstance = Instantiate(bullet, new Vector3(transform.position.x, transform.position.y, -1f), Quaternion.Euler(0,0,rotation + 90));
+        bulletInstance.GetComponent<BulletController>().enemyPosit = enemy.position;
+    }
+
+    void OnMouseOver()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            Destroy(transform);
+            //give player money back
+        }
     }
 }

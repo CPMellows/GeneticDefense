@@ -78,6 +78,8 @@
     <Compile Include="Assets\Scripts\BulletController.cs" />
     <Compile Include="Assets\Scripts\EnemyTest.cs" />
     <Compile Include="Assets\Scripts\PopoutController.cs" />
+    <Compile Include="Assets\Scripts\PopoutSpriteMovement.cs" />
+    <Compile Include="Assets\Scripts\SpriteDragController.cs" />
     <Compile Include="Assets\Scripts\TileSpawn.cs" />
     <Compile Include="Assets\Scripts\TowerAttack.cs" />
   </ItemGroup>
