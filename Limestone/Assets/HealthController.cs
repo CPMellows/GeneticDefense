@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class HealthController : MonoBehaviour {
 
+    public int livesRemain = 5;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -11,6 +13,14 @@ public class HealthController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        if (transform.childCount == 0)
+            // end game
+            print("You lose");
 	}
+
+    void loseHeart()
+    {
+        Destroy(transform.GetChild(livesRemain - 1));
+        livesRemain--;
+    }
 }

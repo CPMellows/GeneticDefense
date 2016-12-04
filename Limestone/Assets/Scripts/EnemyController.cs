@@ -13,13 +13,12 @@ public class EnemyController : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
-        if (destination == 10)
-            Destroy(transform.gameObject);
+	void FixedUpdate () {  
         transform.position = Vector3.MoveTowards(new Vector3(transform.position.x, transform.position.y, -2f), points[destination], speed * Time.deltaTime);
         if (Vector3.Distance(transform.position, points[destination]) < 0.3f)
             destination++;
-        //print(destination);
+        if (destination == 10)
+            Destroy(transform.gameObject);
     }
 
     void buildArray()
