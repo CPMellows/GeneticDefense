@@ -5,6 +5,7 @@ using UnityEngine;
 public class PopoutSpriteMovement : MonoBehaviour {
 
     public GameObject towerSprite;
+    public bool tab = false;
     private Vector3 relation;
 
 	// Use this for initialization
@@ -21,6 +22,7 @@ public class PopoutSpriteMovement : MonoBehaviour {
 
     void OnMouseDown()
     {
-        Instantiate(towerSprite);
+        if (!tab)
+            Instantiate(towerSprite);
     }
 }

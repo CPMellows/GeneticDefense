@@ -25,7 +25,7 @@ public class TowerAttack : MonoBehaviour {
 	// called to attack an enemy or enemies in range
 	void attack() {
 		Collider2D[] hitColliders = Physics2D.OverlapCircleAll (transform.position, towerRange, 1 << LayerMask.NameToLayer ("Enemies"));
-		if (hitColliders.Length != 0) {
+        if (hitColliders.Length != 0) {
 			if (towerType == 0) { // hits one enemy at a time
 				hitColliders [0].SendMessage ("Damage", towerDamage);
 				shoot(hitColliders[0].transform);

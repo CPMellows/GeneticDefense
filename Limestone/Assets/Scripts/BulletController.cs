@@ -16,7 +16,7 @@ public class BulletController : MonoBehaviour {
 	void FixedUpdate () {
         transform.position = Vector3.MoveTowards
                    (new Vector3(transform.position.x, transform.position.y, -1f), enemyPosit, 20 * Time.deltaTime);
-        if (transform.position.x == enemyPosit.x && transform.position.y == enemyPosit.y)
+        if (Vector3.Distance(transform.position, enemyPosit) < 1f)
             Destroy(transform.gameObject);
     }
 }
