@@ -24,15 +24,16 @@ public class EnemySpawnScript : MonoBehaviour {
         List<int[]> enemyType = eg.getEnemies();
         for (int i =0 ; i < 5; i++)
         {
-            GameObject enemyi = Instantiate(enemy, transform.position,Quaternion.identity);
+            GameObject enemyi = Instantiate(enemy, transform.position, Quaternion.identity);
             enemyi.GetComponent<EnemyScript>().enemySpecs = enemyType.ElementAt(i);
         }
         
     }
 	
-    IEnumerator freezeTime()
+    IEnumerator freezeTime(int i, List<int[]> enemyType)
     {
-        yield return new WaitForSeconds(2f);
+        
+        yield return new WaitForSecondsRealtime(2);
     }
 
 	// Update is called once per frame

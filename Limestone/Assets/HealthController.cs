@@ -20,7 +20,7 @@ public class HealthController : MonoBehaviour {
 
     void loseHeart()
     {
-        Destroy(transform.GetChild(livesRemain - 1));
+        Destroy(transform.GetChild(livesRemain - 1).gameObject);
         livesRemain--;
     }
 }

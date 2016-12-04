@@ -5,20 +5,27 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour {
 
     public int destination = 0;
-    public int speed = 2;
+    public int speed;
     public Vector3[] points;
-	// Use this for initialization
-	void Start () {
+    public GameObject health;
+
+    // Use this for initialization
+    void Start () {
         buildArray();
-	}
+        health = GameObject.FindGameObjectWithTag("Health");
+    }
 	
 	// Update is called once per frame
-	void FixedUpdate () {  
+	void FixedUpdate () {
+        speed = transform.GetComponent<EnemyScript>().movementSpeed;
         transform.position = Vector3.MoveTowards(new Vector3(transform.position.x, transform.position.y, -2f), points[destination], speed * Time.deltaTime);
         if (Vector3.Distance(transform.position, points[destination]) < 0.3f)
             destination++;
         if (destination == 10)
+        {
+            health.SendMessage("loseHeart");
             Destroy(transform.gameObject);
+        }
     }
 
     void buildArray()
